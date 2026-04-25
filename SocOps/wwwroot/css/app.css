@@ -236,9 +236,33 @@ button:disabled { cursor: default; }
     pointer-events: none;
 }
 
+/* Scanning atmospheric line */
+.start-scan-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.start-scan-overlay::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(232, 160, 32, 0.06) 20%,
+        rgba(232, 160, 32, 0.12) 50%,
+        rgba(232, 160, 32, 0.06) 80%,
+        transparent
+    );
+    animation: scan-line 5s linear infinite;
+}
+
 .start-logo-region {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     animation: fade-slide-up 0.6s ease-out both;
 }
 
@@ -282,7 +306,7 @@ button:disabled { cursor: default; }
     padding: 1.25rem 1.5rem;
     margin-bottom: 1.5rem;
     position: relative;
-    animation: fade-slide-up 0.6s 0.15s ease-out both;
+    animation: fade-slide-up 0.6s 0.2s ease-out both;
 }
 
 .start-card::before,
@@ -352,7 +376,7 @@ button:disabled { cursor: default; }
     position: relative;
     overflow: hidden;
     transition: all 200ms ease;
-    animation: fade-slide-up 0.6s 0.3s ease-out both;
+    animation: fade-slide-up 0.6s 0.35s ease-out both;
     cursor: pointer;
 }
 
@@ -374,6 +398,79 @@ button:disabled { cursor: default; }
 .btn-deploy:active { color: var(--bg-primary); }
 
 .btn-deploy span { position: relative; z-index: 1; }
+
+/* =========================================================
+   START SCREEN — QUICK STATS HUD BAR
+   ========================================================= */
+.start-stats-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 22rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-tactical);
+    padding: 0.875rem 1.5rem;
+    position: relative;
+    animation: fade-slide-up 0.6s 0.1s ease-out both;
+}
+
+.start-stats-bar::before,
+.start-stats-bar::after {
+    content: '';
+    position: absolute;
+    width: 8px; height: 8px;
+    border-color: var(--accent-gold-dim);
+    border-style: solid;
+}
+
+.start-stats-bar::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.start-stats-bar::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+.stat-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.stat-num {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--accent-gold);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+}
+
+.stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.stat-divider {
+    width: 1px;
+    height: 2rem;
+    background-color: var(--border-tactical);
+    margin: 0 0.5rem;
+    flex-shrink: 0;
+}
+
+.start-status-bar {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 1.25rem;
+    opacity: 0.55;
+    animation: fade-slide-up 0.6s 0.5s ease-out both;
+}
 
 /* =========================================================
    GAME SCREEN
@@ -672,6 +769,11 @@ button:disabled { cursor: default; }
 @keyframes fade-slide-up {
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scan-line {
+    0%   { top: 0; }
+    100% { top: 100%; }
 }
 
 @keyframes glitch-title {

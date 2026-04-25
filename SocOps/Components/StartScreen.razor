@@ -1,10 +1,34 @@
 <div class="start-screen">
+
+    <!-- Scanning atmospheric line overlay -->
+    <div class="start-scan-overlay" aria-hidden="true"></div>
+
+    <!-- Hero / Logo Region -->
     <div class="start-logo-region">
-        <p class="start-tagline">Special Operations Division</p>
+        <p class="start-tagline">&#9658;&nbsp; Special Operations Division &nbsp;&#9668;</p>
         <h1 class="start-title">SOC<span class="gold">&nbsp;OPS</span></h1>
         <p class="start-subtitle">Social Debrief &nbsp;//&nbsp; Bingo Protocol</p>
     </div>
 
+    <!-- Quick-Stats HUD Bar -->
+    <div class="start-stats-bar">
+        <div class="stat-unit">
+            <span class="stat-num">5&#215;5</span>
+            <span class="stat-label">Grid</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-unit">
+            <span class="stat-num">24</span>
+            <span class="stat-label">Questions</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-unit">
+            <span class="stat-num">5</span>
+            <span class="stat-label">To Win</span>
+        </div>
+    </div>
+
+    <!-- Mission Briefing Card -->
     <div class="start-card">
         <p class="start-card-heading">&#9632;&nbsp; Mission Briefing</p>
         <ul class="start-rules">
@@ -23,9 +47,14 @@
         </ul>
     </div>
 
+    <!-- Deploy CTA -->
     <button class="btn-deploy" @onclick="OnStart">
         <span>&#9654;&nbsp; Deploy to Field</span>
     </button>
+
+    <!-- System-status footer -->
+    <p class="start-status-bar">SYS&nbsp;//&nbsp; ALL SYSTEMS NOMINAL &nbsp;|&nbsp; STANDING BY</p>
+
 </div>
 
 @code {

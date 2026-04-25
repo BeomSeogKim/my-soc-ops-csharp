@@ -772,8 +772,8 @@ button:disabled { cursor: default; }
 }
 
 @keyframes scan-line {
-    0%   { top: -2%; }
-    100% { top: 102%; }
+    0%   { top: 0; }
+    100% { top: 100%; }
 }
 
 @keyframes glitch-title {
